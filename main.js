@@ -92,6 +92,6 @@ function loadImages(){
 
 function click(){
     
-    window.location.href = "http://google.com";
+    window.location.href = "images/"+locI+".png";
 
 }
