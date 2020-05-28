@@ -10,7 +10,8 @@ function preload(){
 }
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    canvas = createCanvas(windowWidth, windowHeight);
+    canvas.mouseClicked(click);
 }
 
 function draw() {
@@ -77,7 +78,6 @@ function where(){
     locX = Math.floor(mouseX / (windowWidth / gridX));
     locY = Math.floor(mouseY / (windowHeight / gridY));
     locI = locX + locY * gridX;
-    console.log(locX, locY, locI);
 }
 
 function loadImages(){
@@ -87,5 +87,11 @@ function loadImages(){
         images.push(image);
     }
     return images;
+
+}
+
+function click(){
+    
+    window.location.href = "http://google.com";
 
 }
