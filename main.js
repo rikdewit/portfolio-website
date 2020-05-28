@@ -25,21 +25,27 @@ function draw() {
     where();
 
 
-    // drawGrid();
+    drawGrid();
 }
 
 function drawBackground(){
-    let img = bg[locI]
+    let img = bg[locI];
     let imgAR = img.width/img.height
+    let imgHeight;
+    let imgWidth;
 
-    if(imgAR > aspectRatio){
-        img.resize(windowHeight+75,0);
+    if(imgAR - 0.12 > aspectRatio){
+
+        imgHeight = windowHeight
+        imgWidth = (windowHeight/img.height)*img.height;
     }else{
-        img.resize(0,windowWidth);
+        
+        imgWidth = windowWidth;
+        imgHeight = (windowWidth/img.width)*img.width;
     }
 
     imageMode(CENTER);
-    image(img, windowWidth/2, windowHeight/2);
+    image(img, windowWidth/2, windowHeight/2, imgWidth, imgHeight);
 }
 
 function windowResized() {
