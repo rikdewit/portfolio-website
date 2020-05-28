@@ -3,6 +3,7 @@ let locX = 0;
 let locY = 0;
 let locI = 0;
 let bg;
+let aspectRatio
 
 function preload(){
     calcGrid();
@@ -11,22 +12,43 @@ function preload(){
 
 function setup() {
     canvas = createCanvas(windowWidth, windowHeight);
+    canvas.position(0,0);
     canvas.mouseClicked(click);
+    aspectRatio = windowWidth/windowHeight;
+
 }
 
 function draw() {
-    background(bg[locI]);
-
-    //drawGrid();
+   
+    background(0);
+    drawBackground();
     where();
+
+
+    // drawGrid();
+}
+
+function drawBackground(){
+    let img = bg[locI]
+    let imgAR = img.width/img.height
+
+    if(imgAR > aspectRatio){
+        img.resize(windowHeight+75,0);
+    }else{
+        img.resize(0,windowWidth);
+    }
+
+    imageMode(CENTER);
+    image(img, windowWidth/2, windowHeight/2);
 }
 
 function windowResized() {
+    aspectRatio = windowWidth/windowHeight;
     resizeCanvas(windowWidth, windowHeight);
     calcGrid();
-
+    clear();
+    // console.log(windowWidth,windowHeight);
 }
-
 
 function calcGrid(){
     aspectRatio = windowWidth/windowHeight;
@@ -78,12 +100,13 @@ function where(){
     locX = Math.floor(mouseX / (windowWidth / gridX));
     locY = Math.floor(mouseY / (windowHeight / gridY));
     locI = locX + locY * gridX;
+    // console.log(locX, locY, locI);
 }
 
 function loadImages(){
     let images = [];
     for(let i=0; i<gridX*gridY*gridFactor;i++){
-        image = loadImage('images/'+i+'.png');
+        let image = loadImage('images/'+i+'.png');
         images.push(image);
     }
     return images;
