@@ -1,7 +1,8 @@
-body {
+html, body {
   overflow-y: hidden; /* Hide vertical scrollbar */
   overflow-x: hidden; /* Hide horizontal scrollbar */
   margin: 0;
+  -webkit-overflow-scrolling: touch;
 }
 
 .title{

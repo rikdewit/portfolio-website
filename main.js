@@ -6,6 +6,12 @@ let bg;
 let aspectRatio;
 let vid;
 
+window.onload = function(){
+    const targetElement = document.querySelector("body");
+    console.log(targetElement);
+    bodyScrollLock.disableBodyScroll(targetElement);
+}
+
 function preload(){
     calcGrid();
     bg = loadImages();
@@ -36,7 +42,7 @@ function draw() {
     background(40,20,250);
     drawBackground();
     where();
-    // drawGrid();
+    drawGrid();
 }
 
 function drawBackground(){
@@ -70,6 +76,11 @@ function windowResized() {
     aspectRatio = windowWidth/windowHeight;
     resizeCanvas(windowWidth, windowHeight);
     calcGrid();
+}
+
+function deviceTurned(){
+    
+    windowResized();
 }
 
 function calcGrid(){
