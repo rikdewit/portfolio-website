@@ -21,3 +21,7 @@ body {
 canvas{
   z-index: -1;
 }
+
+video{
+  display: none;
+}

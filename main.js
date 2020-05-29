@@ -9,8 +9,11 @@ let vid;
 function preload(){
     calcGrid();
     bg = loadImages();
-    vid = createVideo(['images/bike.mp4'],play);
-    vid.hide();
+    vid = createVideo(['images/bike.mp4'], play);
+    vid.elt.setAttribute('playsinline','');
+    vid.elt.setAttribute('autoplay','');
+    vid.elt.setAttribute("loop","true"); 
+    
 }
 
 function setup() {
@@ -22,22 +25,22 @@ function setup() {
 }
 
 function play(){
-    console.log("loaded");
+    //video will have sound on ios with this, it will only play with sound on  (??!)
     vid.volume(0);
-    console.log(vid.height, vid.width);
     vid.loop();
 }
 
 function draw() {
+
     
     background(40,20,250);
     drawBackground();
     where();
-    drawGrid();
+    // drawGrid();
 }
 
 function drawBackground(){
-    console.log(locI);
+    // console.log(locI);
     let img;
     if(locI === 0){
         img = vid;
@@ -67,8 +70,6 @@ function windowResized() {
     aspectRatio = windowWidth/windowHeight;
     resizeCanvas(windowWidth, windowHeight);
     calcGrid();
-    clear();
-    // console.log(windowWidth,windowHeight);
 }
 
 function calcGrid(){
