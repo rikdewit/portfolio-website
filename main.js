@@ -3,11 +3,14 @@ let locX = 0;
 let locY = 0;
 let locI = 0;
 let bg;
-let aspectRatio
+let aspectRatio;
+let vid;
 
 function preload(){
     calcGrid();
     bg = loadImages();
+    vid = createVideo(['images/bike.mp4'],play);
+    vid.hide();
 }
 
 function setup() {
@@ -18,9 +21,16 @@ function setup() {
 
 }
 
+function play(){
+    console.log("loaded");
+    vid.volume(0);
+    console.log(vid.height, vid.width);
+    vid.loop();
+}
+
 function draw() {
-   
-    background(0);
+    
+    background(40,20,250);
     drawBackground();
     where();
     drawGrid();
@@ -28,19 +38,25 @@ function draw() {
 
 function drawBackground(){
     console.log(locI);
-    let img = bg[locI];
+    let img;
+    if(locI === 0){
+        img = vid;
+    }else{
+        img = bg[locI];
+    }
+    // img = bg[locI];
     let imgAR = img.width/img.height
     let imgHeight;
     let imgWidth;
 
-    if(imgAR - 0.12 > aspectRatio){
+    if(imgAR > aspectRatio){
 
         imgHeight = windowHeight
-        imgWidth = (windowHeight/img.height)*img.height;
+        imgWidth = (windowHeight/img.height)*img.width;
     }else{
         
         imgWidth = windowWidth;
-        imgHeight = (windowWidth/img.width)*img.width;
+        imgHeight = (windowWidth/img.width)*img.height;
     }
 
     imageMode(CENTER);
