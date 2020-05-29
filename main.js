@@ -23,12 +23,11 @@ function draw() {
     background(0);
     drawBackground();
     where();
-
-
     drawGrid();
 }
 
 function drawBackground(){
+    console.log(locI);
     let img = bg[locI];
     let imgAR = img.width/img.height
     let imgHeight;
@@ -105,8 +104,12 @@ function drawGrid(){
 function where(){
     locX = Math.floor(mouseX / (windowWidth / gridX));
     locY = Math.floor(mouseY / (windowHeight / gridY));
+
     locI = locX + locY * gridX;
-    // console.log(locX, locY, locI);
+    // fix for choosing image when resizing window
+    if(locI >= 12 || locI < 0){
+        locX, locY, locI = 0;
+    }
 }
 
 function loadImages(){
