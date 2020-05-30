@@ -15,7 +15,7 @@ window.onload = function(){
 function preload(){
     calcGrid();
     bg = loadImages();
-    vid = createVideo(['images/bike.mp4'], play);
+    vid = createVideo(['assets/bike.mp4'], play);
     vid.elt.setAttribute('playsinline','');
     vid.elt.setAttribute('autoplay','');
     vid.elt.setAttribute("loop","true"); 
@@ -143,7 +143,7 @@ function where(){
 function loadImages(){
     let images = [];
     for(let i=0; i<gridX*gridY*gridFactor;i++){
-        let image = loadImage('images/'+i+'.png');
+        let image = loadImage('assets/'+i+'.jpg');
         images.push(image);
     }
     return images;
@@ -152,6 +152,6 @@ function loadImages(){
 
 function click(){
     
-    window.location.href = "images/"+locI+".png";
+    window.location.href = "assets/"+locI+".jpg";
 
 }

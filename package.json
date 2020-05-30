@@ -1,0 +1,23 @@
+{
+  "name": "rikdewit.nl",
+  "version": "1.0.0",
+  "description": "Currently hosted at  https://rikdewit.github.io/portfolio-website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rikdewit/portfolio-website.git"
+  },
+  "author": "Rik de Wit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rikdewit/portfolio-website/issues"
+  },
+  "homepage": "https://github.com/rikdewit/portfolio-website#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
+  }
+}
