@@ -1,12 +1,11 @@
 const express = require('express');
 const path = require('path');
 const cloudinary = require('cloudinary').v2;
-const dotenv = require('dotenv');
+const dotenv = require('dotenv').config(".env");
 
 
 const app = express()
 const port = 3000
-
 
 
 
