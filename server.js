@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const cloudinary = require('cloudinary').v2;
+const dotenv = require('dotenv');
 
 
 const app = express()
@@ -20,9 +21,9 @@ app.get('/media_urls', function (req, res) {
 
 
 cloudinary.config({
-    cloud_name: 'rikdewit-cdn',
-    api_key: '338636767942619',
-    api_secret: 'a2MjFBM6HzLIRukfmqg7qgc6pBM'
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_KEY,
+    api_secret: process.env.CLOUDINARY_SECRET,
 });
 
 
