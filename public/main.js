@@ -3,57 +3,84 @@ let locX = 0;
 let locY = 0;
 let locI = 0;
 let bg;
+let media_urls;
 let aspectRatio;
-let vid;
+let loaded = false;
 
 window.onload = function(){
     const targetElement = document.querySelector("body");
-    console.log(targetElement);
     bodyScrollLock.disableBodyScroll(targetElement);
 }
 
-function preload(){
-    calcGrid();
-    bg = loadImages();
-    vid = createVideo(['assets/bike.mp4'], play);
+
+async function preload(){
+
+    media_urls = await fetch("/media_urls").then(response => response.json());
+    bg = await loadMedia(media_urls);
+
+    loaded = true; 
+    
+}
+
+
+async function loadMedia(urls){
+    let media = [];
+    for (url of urls) {
+        let file_ext = url.slice(-3)
+        if(file_ext === "jpg"){
+            let image = loadImage(url);
+            media.push(image);
+
+        }else if(file_ext === "mp4"){
+            let video = await loadVideo(url);
+            media.push(video)
+        }
+
+    }
+    return media
+}
+
+function loadimage(url){
+    return loadImage(url);
+}
+
+async function loadVideo(url, i){
+    let vid = await createVideo(url);
     vid.elt.setAttribute('playsinline','');
     vid.elt.setAttribute('autoplay','');
     vid.elt.setAttribute("loop","true"); 
     
+    vid.volume(0);
+    vid.loop();
+
+    return vid
 }
+
 
 function setup() {
     canvas = createCanvas(windowWidth, windowHeight);
     canvas.position(0,0);
     canvas.mouseClicked(click);
     aspectRatio = windowWidth/windowHeight;
+    calcGrid();
 
 }
 
-function play(){
-    //video will have sound on ios with this, it will only play with sound on  (??!)
-    vid.volume(0);
-    vid.loop();
-}
+
 
 function draw() {
+    background(255);
 
-    
-    background(40,20,250);
-    drawBackground();
+    if(loaded){
+        drawBackground();
+    }
+
     where();
-    drawGrid();
+    // drawGrid();
 }
 
 function drawBackground(){
-    // console.log(locI);
-    let img;
-    if(locI === 0){
-        img = vid;
-    }else{
-        img = bg[locI];
-    }
-    // img = bg[locI];
+    let img = bg[locI];
     let imgAR = img.width/img.height
     let imgHeight;
     let imgWidth;
@@ -107,8 +134,6 @@ function calcGrid(){
 
     gridX = gridX*gridFactor;
     gridY = gridY*gridFactor;
-
-
 }
 
 function drawGrid(){
@@ -140,18 +165,9 @@ function where(){
     }
 }
 
-function loadImages(){
-    let images = [];
-    for(let i=0; i<gridX*gridY*gridFactor;i++){
-        let image = loadImage('assets/'+i+'.jpg');
-        images.push(image);
-    }
-    return images;
-
-}
 
 function click(){
     
-    window.location.href = "assets/"+locI+".jpg";
+    window.location.href = media_urls[locI];
 
 }
