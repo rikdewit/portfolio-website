@@ -20,5 +20,5 @@ npm start
 
 ## Todo:
 
-- [] Fix autoplay on ios
-- [] Add loading screen 
+- [ ] Fix autoplay on ios
+- [ ] Add loading screen 
