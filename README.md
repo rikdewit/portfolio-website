@@ -15,3 +15,10 @@ Add cloudinary api keys to .env file
 npm install
 npm start
 ```
+
+---
+
+## Todo:
+
+- [] Fix autoplay on ios
+- [] Add loading screen 
