@@ -40,9 +40,6 @@ async function loadMedia(urls){
     return media
 }
 
-function loadimage(url){
-    return loadImage(url);
-}
 
 async function loadVideo(url, i){
     let vid = await createVideo(url);
