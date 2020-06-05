@@ -6,25 +6,62 @@ let bg;
 let media_urls;
 let aspectRatio;
 let loaded = false;
+let canvasloaded = false;
+let media;
+let grid = false;
 
 window.onload = function(){
-    const targetElement = document.querySelector("body");
+    const targetElement = document.body;
     bodyScrollLock.disableBodyScroll(targetElement);
+
 }
+
+let displayCanvas = (function() {
+    let executed = false;
+    return function() {
+        if (!executed) {
+            executed = true;
+            let canvas = document.querySelector("canvas");
+            canvas.classList.toggle("visible");
+        }
+    };
+})();
+
+
+
+
+
+function mediaLoaded(callback){
+    let done = true;
+    for(element of media){
+        if(element.elt){
+            if(element.elt.readyState !== 4){
+                done = false;
+            }
+        }
+    }
+    if(done){
+        if (typeof callback == "function") 
+
+            callback(); 
+            loaded = true;
+
+    }
+    return done;
+}
+
 
 
 async function preload(){
 
     media_urls = await fetch("/media_urls").then(response => response.json());
     bg = await loadMedia(media_urls);
-
-    loaded = true; 
-    
+    canvasloaded = true;    
 }
 
 
 async function loadMedia(urls){
-    let media = [];
+    media = [];
     for (url of urls) {
         let file_ext = url.slice(-3)
         if(file_ext === "jpg"){
@@ -46,9 +83,10 @@ async function loadVideo(url, i){
     vid.elt.setAttribute('playsinline','');
     vid.elt.setAttribute('autoplay','');
     vid.elt.setAttribute("loop","true"); 
-    
     vid.volume(0);
     vid.loop();
+
+    video = document.querySelector("video");
 
     return vid
 }
@@ -68,12 +106,18 @@ function setup() {
 function draw() {
     background(255);
 
-    if(loaded){
+    if(canvasloaded){
         drawBackground();
+    
+        if(!loaded){
+            mediaLoaded(displayCanvas);
+        }
     }
 
     where();
-    // drawGrid();
+    if(grid === true){
+        drawGrid();
+    }
 }
 
 function drawBackground(){
@@ -165,6 +209,10 @@ function where(){
 
 function click(){
     
-    window.location.href = media_urls[locI];
+    // window.location.href = media_urls[locI];
+    let canvas = document.querySelector("canvas");
+
+    
+    canvas.classList.toggle("visible");
 
 }

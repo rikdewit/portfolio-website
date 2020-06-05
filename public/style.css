@@ -18,11 +18,6 @@ html, body {
 
 }
 
-
-canvas{
-  z-index: -1;
-}
-
 video{
   display: none;
 }
@@ -31,4 +26,17 @@ video{
   .title{
     font-size: 18px;
   }
+}
+
+
+canvas{
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 1s;
+
+}
+
+.visible{
+  opacity: 1;
+
 }
