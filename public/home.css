@@ -7,7 +7,7 @@
 
 
 #title{
-    font-family: 'Nixie One', cursive;
+    font-family: 'Nixie One';
     user-select: none;
 }
 
@@ -17,8 +17,8 @@
     overflow: hidden;
     width: 0em;
     animation-name: mark;
-    animation-delay: 1.5s;
-    animation-duration: 1s;
+    /* animation-delay: 1.5s; */
+    animation-duration: 1.2s;
     animation-fill-mode: forwards;  
     animation-timing-function: ease-in-out;
     box-shadow: .5em .5em 0.08em;
@@ -30,7 +30,24 @@
     cursor: pointer;
 
     transition: color .4s;
-    transition: transform .15s ease-out;
+    transition: transform .15s ease-out, color 2s;
+
+}
+
+#titleBox:hover{
+    color: rgb(0,75,0);
+    transform: scale(1.04) skewX(-7deg);
+    transition: transform .2s ease-out, color .3s;
+}
+
+#titleBox.clicked{
+    color: green;
+    transform: scale(1.05) skewX(-8deg);
+}
+
+#titleBox.clicked > #title{
+    color: green;
+ 
 
 }
 
@@ -55,13 +72,5 @@
     }
 }
 
-
-
-#titleBox:hover{
-    color: rgb(0,69,0);
-    transition: color .22s;
-    transition: transform .2s ease-out;
-    transform: scale(1.04)
-}
 
 
