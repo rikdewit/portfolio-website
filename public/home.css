@@ -1,3 +1,7 @@
+:root{
+    --font-size: 4vh;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -5,7 +9,7 @@
 
 }
 
-/* Main  */
+/* Main Title button*/
 
 #title{
     font-family: 'Nixie One';
@@ -28,6 +32,7 @@
     border-width: .06em;
     border-color: yellow;
     border-style: solid;
+
 
     cursor: pointer;
 
@@ -60,7 +65,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 5vw;
+    font-size: var(--font-size);
     flex-direction: column
 
 }
@@ -74,6 +79,7 @@
     }
 }
 
+/* Cloned titles */
 
 #clones{
     position: absolute;
@@ -83,7 +89,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 5vw;
+    font-size: var(--font-size);
     flex-direction: column;
     z-index: -1;
     overflow: hidden;
@@ -91,8 +97,7 @@
 
 .bgBox{
     position: relative;
-
-    height: 12vw;
+    visibility: hidden;
     width: 12em;
     margin: 3vh;
     transform: scale(1.05) skewX(-8deg);
@@ -132,13 +137,13 @@
 
 #clones > .bgBox:nth-child(6){
     background-color:yellowgreen;
-    color:rgb(99, 99, 99);
+    color:rgb(94, 94, 94);
 
 }
 
 #clones > .bgBox:nth-child(7){
     background-color: rgb(255, 123, 0);
-    color: rgb(255, 180, 151);
+    color: rgb(255, 188, 162);
 
 }
 
