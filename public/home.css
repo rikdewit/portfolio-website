@@ -8,23 +8,28 @@
 
 #title{
     font-family: 'Nixie One', cursive;
+    user-select: none;
 }
 
 #titleBox{
     background: yellow;
     white-space: nowrap;
-    overflow:hidden;
+    overflow: hidden;
     width: 0em;
     animation-name: mark;
-    animation-delay: 1.5s;
+    /* animation-delay: 1.5s; */
     animation-duration: 1s;
     animation-fill-mode: forwards;  
     animation-timing-function: ease-in-out;
-    box-shadow: .5em .5em 0.1em;
+    box-shadow: .5em .5em 0.08em;
     border-radius: .08em;
     border-width: .06em;
     border-color: yellow;
     border-style: solid;
+
+    cursor: pointer;
+
+    transition: color .4s;
 
 }
 
@@ -48,4 +53,12 @@
         width: 12em;
     }
 }
+
+
+
+#titleBox:hover{
+    color: rgb(0,100,0);
+    transition: color .22s;
+}
+
 
