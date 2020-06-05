@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+
+}
+
+
+#title{
+    font-family: 'Nixie One', cursive;
+}
+
+#titleBox{
+    background: yellow;
+    white-space: nowrap;
+    overflow:hidden;
+    width: 0em;
+    animation-name: mark;
+    animation-delay: 1.5s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;  
+    animation-timing-function: ease-in-out;
+    box-shadow: .5em .5em 0.1em;
+    border-radius: .08em;
+    border-width: .06em;
+    border-color: yellow;
+    border-style: solid;
+
+}
+
+#titleContainer{
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 5vw;
+
+}
+
+@keyframes mark{
+    from{
+        width: 0em;
+    }
+    to{
+        width: 12em;
+    }
+}
+
