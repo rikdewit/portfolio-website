@@ -1,5 +1,3 @@
-
-
 let title = document.querySelector("#titleBox");
 let clones = document.querySelectorAll(".bgBox");
 let contentDiv = document.querySelector("#content");
@@ -8,6 +6,7 @@ title.addEventListener("click", (e) => {
     title.classList.add("clicked");
     setTimeout(launch, 500);
     setTimeout(zoom, 2000);
+    setTimeout(animateFinished, 5500);
 });
 
 function launch() {
@@ -28,3 +27,8 @@ function launch() {
 function zoom(){
     contentDiv.classList.add("zoom");
 }
+
+function animateFinished(){
+    animated = true;
+}
+

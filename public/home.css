@@ -1,3 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+
+}
+
+
 :root{
     --font-size: 4vh;
     --marker-duration: 1.2s;
@@ -7,13 +15,6 @@ body{
     overflow: hidden;
 }
 
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing:border-box;
-
-}
 
 /* Main Title button*/
 
@@ -29,7 +30,7 @@ body{
     overflow: hidden;
     width: 0em;
     animation-name: mark;
-    /* animation-delay: 1.5s; */
+    animation-delay: 1.5s;
     animation-duration: var(--marker-duration);
     animation-fill-mode: forwards;  
     animation-timing-function: ease-in-out;
@@ -161,6 +162,9 @@ body{
 }
 
 @keyframes fade{
+    from{
+        filter: contrast(3);
+    }
     40%{
         opacity: 0%
     }
@@ -173,6 +177,6 @@ body{
 
 @keyframes colors{
     to{
-        filter: contrast(2) hue-rotate(360deg)
+        filter: contrast(3) hue-rotate(360deg)
     }
 }
