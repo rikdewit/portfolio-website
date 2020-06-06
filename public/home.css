@@ -1,6 +1,12 @@
 :root{
     --font-size: 4vh;
+    --marker-duration: 1.2s;
 }
+body{
+    background-image: url("paperwhite opacity.png");
+    overflow: hidden;
+}
+
 
 *{
     margin: 0;
@@ -24,7 +30,7 @@
     width: 0em;
     animation-name: mark;
     /* animation-delay: 1.5s; */
-    animation-duration: 1.2s;
+    animation-duration: var(--marker-duration);
     animation-fill-mode: forwards;  
     animation-timing-function: ease-in-out;
     box-shadow: .5em .5em 0.08em;
@@ -33,23 +39,23 @@
     border-color: yellow;
     border-style: solid;
 
-
     cursor: pointer;
 
-    transition: color .4s;
-    transition: transform .15s ease-out, color 2s;
+    transition: transform .2s ease-out, color .3s;
 
 }
 
 #titleBox:hover{
-    color: rgb(0,75,0);
+    color: rgb(0,80,0);
     transform: scale(1.04) skewX(-7deg);
-    transition: transform .2s ease-out, color .3s;
 }
 
 #titleBox.clicked{
     color: green;
     transform: scale(1.05) skewX(-8deg);
+    cursor: none;
+    transition: transform 1s ease-out, color 1s;
+
 }
 
 #titleBox.clicked > #title{
@@ -147,3 +153,26 @@
 
 }
 
+
+
+
+#content.zoom > #clones{
+    animation: colors 3s ease-out,fade 1s 2.9s ease-out forwards;
+}
+
+@keyframes fade{
+    40%{
+        opacity: 0%
+    }
+    to{
+        opacity: 0%;
+        transform: scale(.7);
+        filter: blur(20px)
+    }
+}
+
+@keyframes colors{
+    to{
+        filter: contrast(2) hue-rotate(360deg)
+    }
+}
